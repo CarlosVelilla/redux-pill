@@ -4,7 +4,7 @@ import { postLocalStorage } from "../../utils/localStorage/localStorage";
 
 import Form from "react-bootstrap/Form";
 
-function Filters() {
+function Filters({ reloadProperties, setReloadProperties }) {
   const [houseType, sethouseType] = useState("");
   const [bedrooms, setBedrooms] = useState(0);
   const [maxPrice, setMaxPrice] = useState(0);
@@ -41,7 +41,10 @@ function Filters() {
         requestOptions
       )
         .then((response) => response.json())
-        .then((result) => postLocalStorage(result))
+        .then((result) => {
+          postLocalStorage(result)
+          setReloadProperties(!reloadProperties)
+        })
         .catch((error) => console.log("error", error))
     };
 

@@ -1,13 +1,21 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { getLocalStorage } from '../../utils/localStorage/localStorage'
 
 import CardProperty from '../CardProperty/CardProperty'
 
-function Properties() {
+function Properties({ reloadProperties }) {
+  const [properties, setProperties] = useState()
+
+  useEffect(() => {
+    setProperties(getLocalStorage())
+  }, [reloadProperties])
+
   return (
     <ul>
-      {getLocalStorage().map((property, index)=>{ <CardProperty id={property.id} key={index}/>})}
+      {properties?.map((property, index) => (
+        <CardProperty id={property.id} city={property.city} key={index}/>
+      ))}
     </ul>
   )
 }

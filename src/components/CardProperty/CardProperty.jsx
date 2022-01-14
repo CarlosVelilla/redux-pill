@@ -1,11 +1,16 @@
 import React from 'react'
 
-function CardProperty({id}) {
-    return (
-        <li>
-            {id}
-        </li>
-    )
+function CardProperty({id, city}) {
+  return (
+    <>
+      <li>
+        {id}
+      </li>
+      <li>
+        {city}
+      </li>
+    </>
+  )
 }
 
 export default CardProperty
