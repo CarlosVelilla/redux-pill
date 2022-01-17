@@ -23,14 +23,6 @@
         "last_name": "God",
         "password": "123321",
         "creation_date": "2021-12-01 23:59:59"
-      },
-      {
-        "id": 4,
-        "email": "cdasilva@assemblerschool.com",
-        "first_name": "Cristiam",
-        "last_name": "Silva",
-        "password": "654321",
-        "creation_date": "2021-12-01 23:59:59"
       }
     ],
     "properties": [
@@ -56,7 +48,8 @@
         "air_conditioning": true,
         "swimming_pool": false,
         "terrace": true,
-        "publication_date": "2020/12/01 01:01:01"
+        "publication_date": "2020/12/01 01:01:01",
+        "zip": 37002
       },
       {
         "id": 2,
