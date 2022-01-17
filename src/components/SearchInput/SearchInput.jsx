@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import saveInputSearch from "../../redux/searchInput/actions";
 import { getProperties } from "../../redux/properties/actions.js";
+import { deleteLocalStorage, postLocalStorage } from "../../utils/localStorage";
 
 import Form from "react-bootstrap/Form";
 
@@ -18,11 +19,18 @@ function SearchInput({ isHome }) {
     inputRef.current.value = searchInput !== "" ? searchInput : "";
   }, [searchInput]);
 
+  const resetLocalStorage = () =>{
+    if (inputRef.current.value === ""){
+      deleteLocalStorage("searchInput")
+    }
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(saveInputSearch(inputRef.current.value));
     dispatch(getProperties());
 
+    postLocalStorage("searchInput", inputRef.current.value)
     if (isHome) {
       location("/dashboard");
     }
@@ -32,6 +40,7 @@ function SearchInput({ isHome }) {
     <Form onSubmit={handleSubmit}>
       <Form.Group id="search">
         <Form.Control
+          onChange={resetLocalStorage}
           type="search"
           ref={inputRef}
           required
