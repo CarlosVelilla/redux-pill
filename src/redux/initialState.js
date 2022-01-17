@@ -1,5 +1,6 @@
 const initialState = {
-    searchInput: ""
+    searchInput: "",
+    properties: [],
 };
 
 export default initialState;

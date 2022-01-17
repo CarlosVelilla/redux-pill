@@ -8,9 +8,9 @@ const thunkApplied = applyMiddleware(thunk);
 
 const store = createStore(reducers, composeWithDevTools(thunkApplied));
 
-store.subscribe(()=>{
-    console.log(store);
-});
+// store.subscribe(()=>{
+//     console.log(store);
+// });
 
 export default store;
 
