@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.header__logoContainer {
+  display: flex;
+}
+
+.header__logoContainer_title {
+  color: #FFB800;
+  font-weight: bold;
+}
+
+.header__logoContainer_subtitle {
+  font-size: 0.75rem;
+  font-style: italic;
+}
+
+.header__logoContainer_img {
+  width: 3rem;
+}
+
+.header__menu {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  list-style-type: none;
+}
+
+.primary_btn {
+  background-color: #FFB800;
+}
