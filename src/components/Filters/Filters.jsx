@@ -1,15 +1,23 @@
-import { useRef } from 'react'
 import Form from 'react-bootstrap/Form'
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
-import saveFilters from '../../redux/filters/actions';
+import { saveFilters, saveFiltersNotBoolean } from '../../redux/filters/actions';
+import { getProperties } from '../../redux/properties/actions';
+import { debounce } from '../../utils/debounce';
+import { getLocalStorage } from '../../utils/localStorage';
 
 function Filters() {
-  const testRef = useRef()
+  const searchInput = useSelector(state => state.inputSearch)
   const dispatch = useDispatch()
-
+  
   const handleChange = (event) => {
-    dispatch(saveFilters(event.target.name, event.target.checked))
+    if (event.target.dataset.type === "boolean") dispatch(saveFilters(event.target.name, event.target.checked))
+    if (event.target.dataset.type === "notboolean") dispatch(saveFiltersNotBoolean(event.target.name, event.target.value))
+    let filters = getLocalStorage("filters")
+    const debounceFnc = debounce(function () {
+      dispatch(getProperties(searchInput, filters))
+    }, 1000)
+    debounceFnc()
   }
 
   return (
@@ -19,8 +27,10 @@ function Filters() {
         <Form.Check
           inline
           label="Flat/Apartment"
-          name="homeType"
-          ref={testRef}
+          name="type"
+          value="flat/apartment"
+          onChange={handleChange}
+          data-type='notboolean'
         />
         <Form.Check
           inline
@@ -65,6 +75,7 @@ function Filters() {
           label="Pet"
           name="pet"
           onChange={(event) => handleChange(event)}
+          data-type='boolean'
         />
       </Form.Group>
 

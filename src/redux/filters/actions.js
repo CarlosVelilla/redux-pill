@@ -1,9 +1,11 @@
 import types from "./types";
 
-const saveFilters = (inputName, checked) => ({
+export const saveFilters = (inputName, checked) => ({
   type: types.FILTERS__SET_BOOLEAN_FILTERS,
   payload: {[inputName]: checked}
 });
 
-export default saveFilters;
-
+export const saveFiltersNotBoolean = (inputName, value) => ({
+  type: types.FILTERS__SET_NOTBOOLEAN_FILTERS,
+  payload: {[inputName]: value}
+})

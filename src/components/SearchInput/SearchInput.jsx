@@ -22,13 +22,15 @@ function SearchInput({ isHome }) {
   const resetLocalStorage = () =>{
     if (inputRef.current.value === ""){
       deleteLocalStorage("searchInput")
+      deleteLocalStorage("properties")
+      deleteLocalStorage("filters")
     }
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(saveInputSearch(inputRef.current.value));
-    dispatch(getProperties());
+    dispatch(getProperties(inputRef.current.value));
 
     postLocalStorage("searchInput", inputRef.current.value)
     if (isHome) {

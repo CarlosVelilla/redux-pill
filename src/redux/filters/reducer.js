@@ -1,5 +1,6 @@
 import types from "./types";
 import initialState from "../initialState";
+import { postLocalStorage } from "../../utils/localStorage";
 
 const filtersReducer = (state = initialState.filters, action) => {
   switch (action.type) {
@@ -7,9 +8,14 @@ const filtersReducer = (state = initialState.filters, action) => {
       if (Object.values(action.payload)[0] === false) {
         const key = Object.keys(action.payload)[0]
         delete state[key]
+        postLocalStorage("filters", state)
         return state
       }
-      return {...state, ...action.payload};
+      postLocalStorage("filters", { ...state, ...action.payload })
+      return { ...state, ...action.payload };
+    case types.FILTERS__SET_NOTBOOLEAN_FILTERS:
+      postLocalStorage("filters", { ...state, ...action.payload })
+      return { ...state, ...action.payload };
     default:
       return state;
   }

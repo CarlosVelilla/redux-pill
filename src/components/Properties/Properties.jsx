@@ -5,16 +5,10 @@ import PropertyCard from "../PropertyCard/PropertyCard"
 
 function Properties() {
   const properties = useSelector(state => state.properties)
-  // const filters = useSelector(state => state.filters)
-  // let filtersKeys = Object.keys(filters)
-
+  
   return (
     <div>
-      {properties
-        // .filter(property =>
-        //   Object.entries(filters).every(([key, value]) => console.log(property[key], value)))
-        //   Object.entries(filters).every(([key, value]) => property[key].includes(value)))
-        .map(property =>
+      {properties.map(property =>
         <PropertyCard
           key={uuid()}
           id={property.id}

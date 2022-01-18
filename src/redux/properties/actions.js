@@ -1,14 +1,12 @@
 import types from "./types";
 import getPropertiesAsync from "../../utils/api";
-import store from "../store";
 
 export const setProperties = (properties) => ({
   type: types.$PROPERTIES__SET_PROPERTIES,
   payload: properties,
 });
 
-export const getProperties = () => async (dispatch) => {
-  const searchInput = store.getState().inputSearch;
-  const properties = await getPropertiesAsync(searchInput);
+export const getProperties = (searchInput, filters) => async (dispatch) => {
+  const properties = await getPropertiesAsync(searchInput, filters);
   dispatch(setProperties(properties));
 };
