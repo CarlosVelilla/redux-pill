@@ -60,6 +60,12 @@ function Filters() {
           name="garden"
           onChange={(event) => handleChange(event)}
         />
+        <Form.Check
+          inline
+          label="Pet"
+          name="pet"
+          onChange={(event) => handleChange(event)}
+        />
       </Form.Group>
 
     </Form>
