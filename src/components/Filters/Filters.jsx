@@ -35,24 +35,51 @@ function Filters() {
         <Form.Check
           inline
           label="Duplex"
-          name="homeType"
+          name="type"
+          value="duplex"
+          onChange={handleChange}
+          data-type='notboolean'
         />
         <Form.Check
           inline
           label="House"
-          name="homeType"
+          name="type"
+          value="house"
+          onChange={handleChange}
+          data-type='notboolean'
         />
         <Form.Check
           inline
           label="Penthouse"
-          name="homeType"
+          name="type"
+          value="penthouse"
+          onChange={handleChange}
+          data-type='notboolean'
+        />
+      </Form.Group>
+
+      <Form.Group id="condition">
+        <Form.Check
+          inline
+          label="New"
+          name="condition"
+          value="new"
+          onChange={handleChange}
+          data-type='notboolean'
+        />
+        <Form.Check
+          inline
+          label="Not new"
+          name="condition"
+          value="not_new"
+          onChange={handleChange}
+          data-type='notboolean'
         />
       </Form.Group>
       
       <Form.Group id="bedrooms">
         <Form.Control
           type="number"
-          // ref={inputRef}
           placeholder="0"
         ></Form.Control>
       </Form.Group>
@@ -74,6 +101,34 @@ function Filters() {
           inline
           label="Pet"
           name="pet"
+          onChange={(event) => handleChange(event)}
+          data-type='boolean'
+        />
+        <Form.Check
+          inline
+          label="Lift"
+          name="lift"
+          onChange={(event) => handleChange(event)}
+          data-type='boolean'
+        />
+        <Form.Check
+          inline
+          label="Air conditioning"
+          name="air_conditioning"
+          onChange={(event) => handleChange(event)}
+          data-type='boolean'
+        />
+        <Form.Check
+          inline
+          label="Swimming pool"
+          name="swimming_pool"
+          onChange={(event) => handleChange(event)}
+          data-type='boolean'
+        />
+        <Form.Check
+          inline
+          label="Terrace"
+          name="terrace"
           onChange={(event) => handleChange(event)}
           data-type='boolean'
         />

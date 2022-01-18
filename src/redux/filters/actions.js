@@ -7,5 +7,5 @@ export const saveFilters = (inputName, checked) => ({
 
 export const saveFiltersNotBoolean = (inputName, value) => ({
   type: types.FILTERS__SET_NOTBOOLEAN_FILTERS,
-  payload: {[inputName]: value}
+  payload: {[inputName]: [value]}
 })

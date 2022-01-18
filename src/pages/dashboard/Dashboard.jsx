@@ -1,12 +1,16 @@
 import Filters from "../../components/Filters/Filters"
 import Properties from "../../components/Properties/Properties"
 import SearchInput from "../../components/SearchInput/SearchInput"
+import UserMenu from "../../components/UserMenu/UserMenu"
 
 function Dashboard() {
   return (
     <>
     <h1>Estamos en Dashboard</h1>
-    <SearchInput/>
+    <div>
+      <SearchInput/>
+      <UserMenu />
+    </div>
     <Filters />
     <Properties />
     </>

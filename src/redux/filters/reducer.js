@@ -14,6 +14,21 @@ const filtersReducer = (state = initialState.filters, action) => {
       postLocalStorage("filters", { ...state, ...action.payload })
       return { ...state, ...action.payload };
     case types.FILTERS__SET_NOTBOOLEAN_FILTERS:
+      // if (Object.entries(action.payload).forEach(([key, value]) => state[key].includes(value))) {
+      //   delete Object.entries(action.payload).forEach(([key, value]) => state[key].includes(value))
+      //   return { ...state }
+      // }
+      // Object.entries(action.payload).forEach( ([key, value]) => console.log(state[key].includes(value)))
+
+
+      const [key, value] = Object.entries(action.payload)[0]
+
+      if (state.hasOwnProperty(key)) {
+        state[key].push(value[0])
+        postLocalStorage("filters", { ...state })
+        return { ...state }
+      }
+
       postLocalStorage("filters", { ...state, ...action.payload })
       return { ...state, ...action.payload };
     default:
