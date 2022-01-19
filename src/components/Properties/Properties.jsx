@@ -7,6 +7,8 @@ function Properties() {
   const properties = useSelector(state => state.properties)
   
   return (
+    <>
+    <h3>Your search has {properties.length} results</h3>
     <div>
       {properties.map(property =>
         <PropertyCard
@@ -37,6 +39,7 @@ function Properties() {
         />
       )}
     </div>
+    </>
   )
 }
 

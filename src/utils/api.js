@@ -14,9 +14,16 @@ const getPropertiesAsync = async (searchInput, filters) => {
 
   let filterURL = ""
 
-  if (filters !== undefined) Object.entries(filters).forEach(([key, value]) => filterURL += `&${key}=${value}`)
+  if (filters !== undefined) Object.entries(filters).forEach(([key, value]) => {
+    console.log(filters[value]);
+    if(key.includes(",")){
+      console.log("Hi");
+      filters[key].forEach(k=>(console.log(k)))
+    }
+    filterURL += `&${key}=${value}`
+  })
 
-  // console.log(filterURL);
+  console.log(filterURL);
 
   const data = await axios.get(`http://localhost:4000/properties?${field}&${filterURL}`);
 

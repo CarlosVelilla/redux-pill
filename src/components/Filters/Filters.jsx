@@ -1,7 +1,7 @@
 import Form from 'react-bootstrap/Form'
 import { useSelector, useDispatch } from 'react-redux';
 
-import { saveFilters, saveFiltersNotBoolean } from '../../redux/filters/actions';
+import { removeFiltersNotBoolean, saveFilters, saveFiltersNotBoolean } from '../../redux/filters/actions';
 import { getProperties } from '../../redux/properties/actions';
 import { debounce } from '../../utils/debounce';
 import { getLocalStorage } from '../../utils/localStorage';
@@ -12,7 +12,8 @@ function Filters() {
   
   const handleChange = (event) => {
     if (event.target.dataset.type === "boolean") dispatch(saveFilters(event.target.name, event.target.checked))
-    if (event.target.dataset.type === "notboolean") dispatch(saveFiltersNotBoolean(event.target.name, event.target.value))
+    if (event.target.dataset.type === "notboolean" && event.target.checked) dispatch(saveFiltersNotBoolean(event.target.name, event.target.value))
+    if (event.target.dataset.type === "notboolean" && !event.target.checked) dispatch(removeFiltersNotBoolean(event.target.name, event.target.value))
     let filters = getLocalStorage("filters")
     const debounceFnc = debounce(function () {
       dispatch(getProperties(searchInput, filters))
